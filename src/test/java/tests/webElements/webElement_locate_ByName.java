@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class webElement_searchField {
+public class webElement_locate_ByName {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -20,9 +20,10 @@ public class webElement_searchField {
         driver.get("https://testotomasyonu.com");
 
         // 3 - Locate search field
-        WebElement searchField = driver.findElement(By.id("global-search"));
-        // findElement brings the first element matches.
-        // If it cannot be found it throws "NoSuchElementException"
+        WebElement searchField = driver.findElement(By.name("search"));
+        // <input class="search-input" id="global-search"
+        // -> // name="search"
+        // type="search" placeholder="Search Product,Category..." onkeyup="searchData(this.value)">
 
         // 4 - Write "shoe" in the search field
         searchField.sendKeys("shoe");
