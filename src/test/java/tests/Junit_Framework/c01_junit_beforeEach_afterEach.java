@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class junit_beforeEach_afterEach {
+public class c01_junit_beforeEach_afterEach {
 
     WebDriver driver;
 

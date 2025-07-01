@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class junit_beforeAll_afterAll {
+public class c02_junit_beforeAll_afterAll {
 
     // BeforeAll runs once at the start of the class
     // AfterALL runs once at the end of the class

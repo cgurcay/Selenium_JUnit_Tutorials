@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class junit_checkBoxes {
+public class c04_junit_checkBoxes {
 
     WebDriver driver;
 
