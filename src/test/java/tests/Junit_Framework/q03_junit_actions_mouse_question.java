@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utilities.ReusableMethods;
 import utilities.TestBase_Each;
 
 public class q03_junit_actions_mouse_question extends TestBase_Each {
@@ -33,20 +34,26 @@ public class q03_junit_actions_mouse_question extends TestBase_Each {
         //6- Click and hold the “Click and hold" box
         WebElement clickAndHoldElement = driver.findElement(By.id("click-box"));
 
-        System.out.println(clickAndHoldElement.getText());
+        System.out.println("Before Click and Hold: " + clickAndHoldElement.getText());
 
         actions.clickAndHold(clickAndHoldElement)
                 .perform();
 
         //7- Print the “Click and hold" box string
-        System.out.println(clickAndHoldElement.getText());
+        System.out.println("After Click and Hold: " + clickAndHoldElement.getText());
+
+        actions.release(clickAndHoldElement)
+                .perform();
+
+        System.out.println("After Release: " + clickAndHoldElement.getText());
+
 
         //8- double click to “Double click me" box
         WebElement doubleClickElement = driver.findElement(By.id("double-click"));
 
         String beforeDoubleClickClassAttribute = doubleClickElement.getAttribute("class");
 
-        System.out.println(beforeDoubleClickClassAttribute);
+        System.out.println("Before Double Click Class: " + beforeDoubleClickClassAttribute);
 
         actions.doubleClick(doubleClickElement)
                 .perform();
@@ -56,9 +63,10 @@ public class q03_junit_actions_mouse_question extends TestBase_Each {
 
         Assertions.assertNotEquals(beforeDoubleClickClassAttribute, afterDoubleClickClassAttribute);
 
-        System.out.println(afterDoubleClickClassAttribute);
+        System.out.println("After Double Click Class: " + afterDoubleClickClassAttribute);
 
 
+        ReusableMethods.wait(10);
     }
 
 }
