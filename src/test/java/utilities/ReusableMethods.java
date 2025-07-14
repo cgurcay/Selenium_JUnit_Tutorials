@@ -1,7 +1,15 @@
 package utilities;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 public class ReusableMethods {
@@ -59,6 +67,59 @@ public class ReusableMethods {
     }
 
 
+    public static void takeScreenshot(WebDriver driver, String fileName) {
+
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+
+        String filePath = "target/screenshots/" + fileName + ".jpeg";
+        File pageScreenshot = new File(filePath);
+
+        File tempFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(tempFile, pageScreenshot);
+        } catch (IOException e) {
+            System.out.println("Couldn't take a screenshot..");
+        }
+    }
 
 
+    public static void takeScreenshotDateTime(WebDriver driver, String fileName) {
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("_yyMMdd_HHmmss");
+        String dateFormatted = localDateTime.format(format);
+
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+
+        String filePath = "target/screenshots/" + fileName + dateFormatted + ".jpeg";
+        File pageScreenshot = new File(filePath);
+
+        File tempFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(tempFile, pageScreenshot);
+        } catch (IOException e) {
+            System.out.println("Couldn't take a screenshot..");
+        }
+    }
+
+
+    public static void takeScreenshotDateTime(WebElement webElement, String fileName) {
+
+        LocalDateTime localDateTime = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("_yyMMdd_HHmmss");
+        String dateFormatted = localDateTime.format(format);
+
+        String filePath = "target/screenshots/" + fileName + dateFormatted + ".jpeg";
+        File pageScreenshot = new File(filePath);
+
+        File tempFile = webElement.getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(tempFile, pageScreenshot);
+        } catch (IOException e) {
+            System.out.println("Couldn't take a screenshot..");
+        }
+    }
 }
